@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>地中海食单 · 麦德龙版</title>
+<meta name="theme-color" content="#FDFBF6">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --paper:#FDFBF6; --cream:#F6F1E4; --ink:#33372E; --ink2:#5E6656; --muted:#9AA08E;
+  --olive:#6B7F3E; --oliveD:#4E5F2C; --clay:#C4642E; --clayD:#A34E20; --blue:#2E6E7E;
+  --gold:#D9A441; --hair:rgba(51,55,46,.15);
+}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--paper);color:var(--ink);font-family:-apple-system,'PingFang SC','HarmonyOS Sans SC','Noto Sans SC','Microsoft YaHei',sans-serif;line-height:1.75}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:98;opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.8' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.4 0 0 0 0 0.38 0 0 0 0 0.3 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+.serif{font-family:Georgia,'Noto Serif SC','Songti SC','SimSun',serif}
+.wrap{max-width:680px;margin:0 auto;padding:0 22px}
+em,i{font-style:normal}
+
+/* ---------- Hero ---------- */
+#hero{background:linear-gradient(180deg,var(--oliveD),var(--olive));padding:calc(env(safe-area-inset-top) + 30px) 0 0;text-align:center;position:relative}
+#hero .kicker{font-family:Georgia,serif;font-style:italic;font-size:12.5px;letter-spacing:3px;color:var(--gold)}
+#hero h1{font-family:Georgia,'Noto Serif SC','Songti SC',serif;font-size:38px;font-weight:700;letter-spacing:6px;color:#FDFBF6;margin-top:8px}
+#hero h1 i{font-family:Georgia,serif;font-size:15px;font-weight:400;letter-spacing:2px;color:var(--gold);display:block;margin-top:6px;font-style:italic}
+#hero .lead{color:#EDEBD8;font-size:14px;line-height:1.9;margin:14px 22px 0;text-align:left}
+#hero .lead b{color:#FFE9B8}
+#heroImg{display:block;width:100%;margin-top:18px;border-top:3px solid var(--gold)}
+#hero::after{content:'';position:absolute;left:0;right:0;bottom:-9px;height:18px;
+  background:radial-gradient(circle at 12px -6px,transparent 12px,var(--paper) 13px) repeat-x;background-size:28px 18px;z-index:2}
+
+/* ---------- 锚点导航 ---------- */
+#nav{position:sticky;top:0;z-index:50;background:rgba(253,251,246,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--hair);
+  display:flex;justify-content:center;gap:2px;padding:9px 8px;overflow-x:auto;scrollbar-width:none}
+#nav::-webkit-scrollbar{display:none}
+#nav a{color:var(--ink2);text-decoration:none;font-size:12px;letter-spacing:1px;padding:4px 10px;border-radius:999px;white-space:nowrap}
+#nav a.on{background:var(--olive);color:#FDFBF6;font-weight:700}
+
+/* ---------- 章节标题 ---------- */
+.chap{margin:52px 0 6px;display:flex;align-items:baseline;gap:12px}
+.chap .no{font-family:Georgia,serif;font-size:40px;font-weight:700;color:var(--clay);line-height:1}
+.chap h2{font-family:Georgia,'Noto Serif SC','Songti SC',serif;font-size:23px;font-weight:700;letter-spacing:2px}
+.chap i{font-family:Georgia,serif;font-style:italic;font-size:12px;color:var(--muted);letter-spacing:1.5px;display:block}
+.chapline{border-top:1.5px solid var(--hair);margin:14px 0 22px}
+
+/* ---------- 核心逻辑 ---------- */
+.core{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0 6px}
+.core div{background:var(--cream);border-radius:10px;padding:14px 14px 12px;border:1px solid var(--hair)}
+.core div:nth-child(1){border-top:3px solid var(--olive)}
+.core div:nth-child(2){border-top:3px solid var(--blue)}
+.core div:nth-child(3){border-top:3px solid var(--clay)}
+.core div:nth-child(4){border-top:3px solid var(--gold)}
+.core b{font-size:14px;letter-spacing:.5px;display:block}
+.core span{font-size:11.5px;color:var(--ink2);line-height:1.6;display:block;margin-top:3px}
+.coreNote{font-size:12.5px;color:var(--ink2);background:var(--cream);border-left:3px solid var(--gold);padding:10px 14px;border-radius:0 8px 8px 0;margin-top:12px;line-height:1.8}
+
+/* ---------- 四大优势 ---------- */
+.adv{border-top:1px dashed var(--hair);padding:16px 2px}
+.adv:first-of-type{border-top:none}
+.adv h3{font-size:15.5px;letter-spacing:.5px;display:flex;align-items:center;gap:8px}
+.adv h3 u{text-decoration:none;font-family:Georgia,serif;font-size:11px;color:#FDFBF6;background:var(--olive);border-radius:999px;padding:2px 9px;letter-spacing:1px;flex-shrink:0}
+.adv p{font-size:13px;color:var(--ink2);margin-top:6px;line-height:1.85}
+.adv p b{color:var(--ink)}
+
+/* ---------- 采购清单 ---------- */
+.shop{background:var(--cream);border:1px solid var(--hair);border-radius:14px;padding:6px 16px;margin:18px 0 8px}
+.sitem{display:flex;gap:12px;padding:15px 0;border-top:1px dashed var(--hair);cursor:pointer}
+.sitem:first-child{border-top:none}
+.sitem .box{width:21px;height:21px;border:1.5px solid var(--muted);border-radius:5px;flex-shrink:0;margin-top:3px;display:flex;align-items:center;justify-content:center;color:transparent;font-size:13px;font-weight:800;transition:all .2s}
+.sitem.done .box{background:var(--olive);border-color:var(--olive);color:#fff}
+.sitem.done .st{opacity:.45;text-decoration:line-through}
+.sitem .st{flex:1}
+.sitem .st b{font-size:14.5px;display:block}
+.sitem .st i{font-family:Georgia,serif;font-style:italic;font-size:10.5px;color:var(--clay);letter-spacing:1px}
+.sitem .st p{font-size:12px;color:var(--ink2);margin-top:2px;line-height:1.7}
+.sitem .st p b{color:var(--oliveD)}
+#shopCount{text-align:center;font-family:Georgia,'Noto Serif SC',serif;font-size:13px;color:var(--ink2);letter-spacing:2px;margin:14px 0 4px}
+#shopCount b{color:var(--clay);font-size:17px}
+
+/* ---------- 三餐 ---------- */
+.meal{background:var(--paper);border:1px solid var(--hair);border-radius:14px;overflow:hidden;margin:18px 0;box-shadow:0 4px 16px rgba(51,55,46,.06)}
+.meal img{display:block;width:100%;height:180px;object-fit:cover}
+.meal .mb{padding:16px 18px 18px}
+.meal .mt{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.meal .mt b{font-family:Georgia,'Noto Serif SC','Songti SC',serif;font-size:18px;letter-spacing:1px}
+.meal .mt i{font-family:Georgia,serif;font-style:italic;font-size:11px;color:var(--muted);white-space:nowrap}
+.meal p{font-size:13.5px;color:var(--ink2);margin-top:8px;line-height:1.9}
+.meal p b{color:var(--clayD)}
+
+/* ---------- 避坑 ---------- */
+.trap{display:flex;gap:12px;padding:14px 2px;border-top:1px dashed var(--hair)}
+.trap:first-of-type{border-top:none}
+.trap .ic{font-size:19px;flex-shrink:0;margin-top:1px}
+.trap b{font-size:14px;display:block}
+.trap p{font-size:12.5px;color:var(--ink2);margin-top:3px;line-height:1.8}
+.trap p b{color:var(--clayD)}
+
+/* ---------- 周节奏 ---------- */
+.week{display:flex;gap:7px;margin:18px 0 10px}
+.wd{flex:1;text-align:center;border:1px solid var(--hair);border-radius:10px;padding:10px 2px 8px;background:var(--paper)}
+.wd b{display:block;font-family:Georgia,serif;font-size:12px;color:var(--muted)}
+.wd i{display:block;font-size:19px;margin-top:4px}
+.wd span{display:block;font-size:9.5px;color:var(--ink2);margin-top:3px;letter-spacing:.5px;line-height:1.4}
+.wd.fish{background:#EAF2EF;border-color:var(--blue)}
+.wd.fish b{color:var(--blue)}
+.wd.free{background:var(--cream);border-style:dashed}
+.weekNote{font-size:12.5px;color:var(--ink2);line-height:1.85;background:var(--cream);border-radius:10px;padding:12px 16px}
+.weekNote b{color:var(--oliveD)}
+
+/* ---------- 五件套 ---------- */
+.five{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:18px 0 8px;text-align:center}
+.five div{background:linear-gradient(160deg,#fff,var(--cream));border:1px solid var(--hair);border-radius:12px;padding:14px 4px 12px}
+.five i{font-size:26px;display:block}
+.five b{font-size:11px;display:block;margin-top:6px;letter-spacing:.5px;line-height:1.5}
+.fiveNote{text-align:center;font-family:Georgia,'Noto Serif SC',serif;font-size:13px;color:var(--ink2);letter-spacing:1px;margin:12px 0 4px;line-height:1.9}
+.fiveNote b{color:var(--clay)}
+
+/* ---------- Footer ---------- */
+footer{margin-top:60px;border-top:1.5px solid var(--hair);padding:26px 22px calc(env(safe-area-inset-bottom) + 30px);text-align:center}
+footer .fm{font-family:Georgia,'Noto Serif SC',serif;font-size:16px;letter-spacing:3px;color:var(--oliveD)}
+footer .fi{font-family:Georgia,serif;font-style:italic;font-size:11px;color:var(--muted);letter-spacing:2px;margin-top:4px}
+.disc{font-size:11px;color:var(--muted);line-height:1.8;margin-top:14px;text-align:left;border-top:1px dashed var(--hair);padding-top:12px}
+.disc b{color:var(--clayD)}
+
+/* toast */
+#toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom) + 90px);transform:translateX(-50%) translateY(8px);z-index:99;
+  background:var(--ink);color:var(--paper);font-size:12.5px;letter-spacing:1px;padding:10px 22px;border-radius:999px;opacity:0;pointer-events:none;transition:all .3s;white-space:nowrap}
+#toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+
+<header id="hero">
+  <div class="kicker">METRO × MEDITERRANEAN DIET</div>
+  <h1>地中海食单<i>La Dieta Mediterranea · 麦德龙一站购齐</i></h1>
+  <div class="lead">
+    核心逻辑一句话：<b>橄榄油替换日常烹调油，鱼虾豆类做主力蛋白，蔬果全谷物铺满半个盘子，红肉退居配角。</b><br>
+    麦德龙恰好把地中海三大关键品类——进口橄榄油、法罗群岛冰鲜三文鱼、西班牙/希腊风味罐头与奶酪——都集齐了。不需要东拼西凑，一站购齐很现实。
+  </div>
+  <img id="heroImg" src="img/hero.png" alt="地中海餐盘" onerror="this.style.display='none'">
+</header>
+
+<nav id="nav">
+  <a href="#c1" class="on">为什么</a><a href="#c2">采购清单</a><a href="#c3">一日三餐</a><a href="#c4">避坑</a><a href="#c5">一周节奏</a><a href="#c6">第一次买</a>
+</nav>
+
+<main class="wrap">
+
+  <div class="chap" id="c1"><span class="no">01</span><div><h2>为什么是麦德龙</h2><i>Why Metro Works</i></div></div>
+  <div class="chapline"></div>
+  <div class="adv"><h3><u>油</u>特级初榨橄榄油</h3>
+    <p>自有品牌<b>宜客（AKA）特级初榨橄榄油</b>长期在售，另有意大利、西班牙进口 <b>Ulisse</b> 等品牌可选，价位覆盖入门到大瓶装；西班牙直采线路上还有 <b>Navidul、Queso de Hualdo</b> 等原产橄榄油、橄榄、奶酪。</p></div>
+  <div class="adv"><h3><u>鱼</u>每周 2-3 次的深海鱼</h3>
+    <p><b>法罗群岛直采整条冰鲜三文鱼</b>，全程 -4℃ 冷链、卖场独立加工间现切、附麦咨达追溯码，刺身级和煎烤级都有；另外还有挪威/冰岛鲭鱼、黑鳕鱼扒、海鲜冻品一整面墙。</p></div>
+  <div class="adv"><h3><u>豆</u>豆类罐头与杂粮</h3>
+    <p><b>鹰嘴豆罐头 425g 即食款</b>常年有货，是做鹰嘴豆泥和沙拉最省事的方案；藜麦、糙米、燕麦、全麦意面在粮油区都能找到。</p></div>
+  <div class="adv"><h3><u>奶</u>奶酪与酸奶</h3>
+    <p><b>METRO Chef 全脂牛奶、菲达/马苏里拉</b>等进口奶酪、<b>希腊式酸奶</b>和麦臻选系列都有覆盖，早餐和沙拉都能用。</p></div>
+
+  <div class="chap" id="c2"><span class="no">02</span><div><h2>采购清单</h2><i>Shopping List · 点一下算备齐</i></div></div>
+  <div class="chapline"></div>
+  <div class="shop" id="shopList"></div>
+  <div id="shopCount">已备 <b>0</b> / 9 类</div>
+
+  <div class="chap" id="c3"><span class="no">03</span><div><h2>一日三餐示范</h2><i>One Day · 全部用麦德龙食材</i></div></div>
+  <div class="chapline"></div>
+  <div class="meal"><img src="img/b1.png" alt="希腊酸奶坚果碗" loading="lazy" onerror="this.style.height='0px'">
+    <div class="mb"><div class="mt"><b>早餐 · 希腊酸奶坚果碗</b><i>5 min</i></div>
+    <p>希腊酸奶打底，铺<b>蓝莓/树莓</b>、一小把<b>核桃和南瓜子</b>，淋半勺蜂蜜。想更顶饱就加 2 勺即食燕麦。全程 5 分钟，是地中海饮食最经典的打开方式。</p></div></div>
+  <div class="meal"><img src="img/b2.png" alt="鹰嘴豆全麦意面温沙拉" loading="lazy" onerror="this.style.height='0px'">
+    <div class="mb"><div class="mt"><b>午餐 · 鹰嘴豆全麦意面温沙拉</b><i>20 min</i></div>
+    <p>全麦螺旋意面煮熟，同锅烫一把菠菜和西兰花；平底锅用橄榄油把<b>彩椒丁、西葫芦丁</b>炒软，倒入沥干的意面、<b>半罐鹰嘴豆罐头</b>翻拌，用盐、黑胡椒、一勺摩德纳香醋调味。豆类+全谷+蔬菜+橄榄油，一份餐盘比例几乎满分。</p></div></div>
+  <div class="meal"><img src="img/b3.png" alt="香煎三文鱼配烤时蔬" loading="lazy" onerror="this.style.height='0px'">
+    <div class="mb"><div class="mt"><b>晚餐 · 香煎三文鱼配烤时蔬</b><i>30 min</i></div>
+    <p>三文鱼柳用海盐、黑胡椒、柠檬汁腌 10 分钟，<b>橄榄油中火每面煎 2-3 分钟</b>；配菜选西葫芦、彩椒、小番茄，撒盐和迷迭香，200℃ 烤 20 分钟，出锅再淋一勺生橄榄油。主食换糙米饭或半个蒸红薯都行。三文鱼建议当天买当天做，麦德龙是整条现切，新鲜度基本不用担心。</p></div></div>
+
+  <div class="chap" id="c4"><span class="no">04</span><div><h2>新手避坑</h2><i>Five Traps</i></div></div>
+  <div class="chapline"></div>
+  <div class="trap"><span class="ic">🫒</span><div><b>橄榄油别当"万能油"高温爆炒</b><p>特级初榨橄榄油发烟点在 <b>190℃ 左右</b>，用来凉拌、中低温煎烤最合适；要大火爆炒就换成普通精炼橄榄油或山茶油，风味和健康能兼顾。</p></div></div>
+  <div class="trap"><span class="ic">🥩</span><div><b>红肉要刻意压频次</b><p>地中海饮食建议红肉<b>每月不超过 340-450g</b>，也就是一周最多一次牛肉/猪肉，其余时间用鱼、虾、鸡肉、豆制品补蛋白。麦德龙牛排区再诱人也别一周吃三次。</p></div></div>
+  <div class="trap"><span class="ic">🍝</span><div><b>"地中海"≠披萨意面自由</b><p>关键看用什么酱和多少蔬菜——奶油培根意面和薄底番茄海鲜意面完全是两回事。意面选<b>全麦、分量控制在一个拳头大小</b>，就还在原则内。</p></div></div>
+  <div class="trap"><span class="ic">🥣</span><div><b>酸奶要看配料表</b><p>希腊酸奶选<b>无糖原味</b>，果味的含糖量经常爆表；想调味用新鲜蓝莓或一小勺蜂蜜更稳妥。</p></div></div>
+  <div class="trap"><span class="ic">🫘</span><div><b>罐头豆类要冲水</b><p>鹰嘴豆罐头开罐后<b>过一遍清水</b>再入菜，能去掉多余的钠和豆腥味，口感更清爽。</p></div></div>
+
+  <div class="chap" id="c5"><span class="no">05</span><div><h2>一周节奏</h2><i>Weekly Rhythm</i></div></div>
+  <div class="chapline"></div>
+  <div class="week">
+    <div class="wd fish"><b>MON</b><i>🐟</i><span>鱼日</span></div>
+    <div class="wd"><b>TUE</b><i>🫘</i><span>豆类<br>鸡胸</span></div>
+    <div class="wd fish"><b>WED</b><i>🐟</i><span>鱼日</span></div>
+    <div class="wd"><b>THU</b><i>🦐</i><span>虾贝<br>鸡蛋</span></div>
+    <div class="wd fish"><b>FRI</b><i>🐟</i><span>鱼日</span></div>
+    <div class="wd"><b>SAT</b><i>🍗</i><span>禽类<br>轮换</span></div>
+    <div class="wd free"><b>SUN</b><i>✨</i><span>自由餐</span></div>
+  </div>
+  <div class="weekNote">鱼安排在<b>周一 / 周三 / 周五</b>，剩下几天用黑虎虾、鸡蛋、鹰嘴豆、鸡胸肉轮换蛋白；每周留一顿<b>"自由餐"</b>想吃啥吃啥——这样执行起来不痛苦，长期坚持才是地中海饮食真正起效的关键。</div>
+
+  <div class="chap" id="c6"><span class="no">06</span><div><h2>第一次去买这五样</h2><i>Start With Five</i></div></div>
+  <div class="chapline"></div>
+  <div class="five">
+    <div><i>🫒</i><b>特级初榨<br>橄榄油</b></div>
+    <div><i>🐟</i><b>冰鲜<br>三文鱼</b></div>
+    <div><i>🫘</i><b>鹰嘴豆<br>罐头</b></div>
+    <div><i>🥣</i><b>希腊式<br>酸奶</b></div>
+    <div><i>🥗</i><b>沙拉菜</b></div>
+  </div>
+  <div class="fiveNote">回家就能直接做出 <b>2 顿标准地中海餐</b>，<br>剩下的食材按兴趣慢慢补。</div>
+
+</main>
+
+<footer>
+  <div class="fm">地中海食单</div>
+  <div class="fi">La Dieta Mediterranea · Metro Edition</div>
+  <div class="disc"><b>小提示：</b>本页是食材搭配与采购思路分享，不构成医疗或营养处方；有慢性病、过敏或特殊饮食需求，请咨询医生或注册营养师。</div>
+</footer>
+
+<div id="toast"></div>
+
+<script>
+const $=s=>document.querySelector(s);
+function toast(t){const el=$("#toast");el.textContent=t;el.classList.add("on");clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove("on"),2000)}
+
+/* ---------- 采购清单 ---------- */
+const LIST=[
+ {cat:"主力油脂",en:"Oils",buy:"宜客 AKA 特级初榨橄榄油 · Ulisse 特级初榨橄榄油",role:"每日 2-4 汤匙，替代黄油/花生油",use:"凉拌油醋汁、低火煎鱼、烤蔬菜淋面"},
+ {cat:"深海鱼",en:"Fish 2-3×/wk",buy:"METRO Chef 法罗群岛冰鲜三文鱼（整条现切/鱼柳/刺身切片）· 黑鳕鱼扒 · 进口鲭鱼",role:"Omega-3 主力蛋白",use:"香煎三文鱼、锡纸烤鲭鱼、刺身沙拉"},
+ {cat:"虾贝海鲜",en:"Seafood",buy:"METRO Chef 印度黑虎虾 · 青口贝 · 鱿鱼圈",role:"鱼类之外的海洋蛋白补充",use:"蒜香橄榄油煎虾、海鲜意面"},
+ {cat:"豆类与全谷物",en:"Legumes & Grains",buy:"鹰嘴豆罐头 425g · 藜麦 · 糙米 · 燕麦片 · 全麦意面 · 扁豆",role:"每日主食+植物蛋白",use:"鹰嘴豆泥、藜麦沙拉、意面温沙拉"},
+ {cat:"蔬果",en:"5 servings+/day",buy:"沙拉菜 · 樱桃番茄 · 荷兰黄瓜 · 彩椒 · 西葫芦 · 菠菜 · 西兰花 · 牛油果 · 蓝莓/树莓",role:"餐盘一半的体量",use:"生食沙拉、烤蔬菜、酸奶水果碗"},
+ {cat:"乳制品",en:"Dairy",buy:"希腊式酸奶 · METRO Chef 全脂牛奶 · 菲达奶酪 · 马苏里拉",role:"适量摄入，发酵乳优先",use:"早餐酸奶碗、沙拉撒菲达碎"},
+ {cat:"坚果与种子",en:"Nuts ~30g/day",buy:"核桃 · 杏仁 · 开心果 · 奇亚籽 · 南瓜子",role:"每日一小把（约 30g）",use:"撒在沙拉/酸奶/燕麦上"},
+ {cat:"风味调味",en:"Flavor",buy:"METRO Premium 摩德纳香醋 · 黑胡椒 · 迷迭香 · 罗勒 · 蒜 · 柠檬",role:"替代盐和重口酱料",use:"油醋汁＝橄榄油＋香醋＋芥末＋蜂蜜"},
+ {cat:"偶尔点缀",en:"Occasional",buy:"西班牙 Blázquez 火腿 · Navidul 伊比利亚肠 · 绿橄榄",role:"少量点缀，控制频次",use:"切片配全麦面包和奶酪做前菜"}
+];
+let done=new Set(JSON.parse(localStorage.getItem("medit_list")||"[]"));
+$("#shopList").innerHTML=LIST.map((x,i)=>`<div class="sitem${done.has(i)?" done":""}" data-i="${i}">
+  <span class="box">✓</span>
+  <div class="st"><b>${x.cat} <i>${x.en}</i></b><p><b>买：</b>${x.buy}<br><b>角色：</b>${x.role}<br><b>用法：</b>${x.use}</p></div>
+</div>`).join("");
+function updCount(){$("#shopCount").innerHTML=`已备 <b>${done.size}</b> / 9 类`}
+$("#shopList").addEventListener("click",e=>{
+  const it=e.target.closest(".sitem");if(!it)return;
+  const i=+it.dataset.i;
+  if(done.has(i)){done.delete(i);it.classList.remove("done")}
+  else{done.add(i);it.classList.add("done")}
+  localStorage.setItem("medit_list",JSON.stringify([...done]));
+  updCount();
+  if(done.size===9)toast("九类备齐 —— 餐盘比例稳了 🫒");
+});
+updCount();
+
+/* ---------- 锚点导航高亮 ---------- */
+const secIds=["c1","c2","c3","c4","c5","c6"];
+addEventListener("scroll",()=>{
+  let cur=secIds[0];
+  secIds.forEach(id=>{const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<90)cur=id});
+  document.querySelectorAll("#nav a").forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+cur));
+},{passive:true});
+</script>
+</body>
+</html>
